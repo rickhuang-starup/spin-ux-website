@@ -1,10 +1,3 @@
-const stats = [
-  { value: "50+", label: "Projects Delivered" },
-  { value: "98%", label: "Client Satisfaction" },
-  { value: "12+", label: "Years Experience" },
-  { value: "30+", label: "Team Members" },
-];
-
 export default function About() {
   return (
     <section id="about" className="bg-section-alt px-6 py-20 sm:py-28 lg:px-10">
@@ -30,24 +23,12 @@ export default function About() {
               use them. We partner closely with product teams to turn complex
               problems into elegant, intuitive solutions.
             </p>
-            <p className="mb-12 text-lg leading-relaxed text-gray-600">
+            <p className="text-lg leading-relaxed text-gray-600">
               From early-stage startups to enterprise platforms, we bring a
               rigorous, human-centered approach to every engagement — ensuring
               design decisions are grounded in evidence and aligned with real
               business outcomes.
             </p>
-
-            {/* Stats grid */}
-            <div className="grid grid-cols-2 gap-6 sm:grid-cols-4">
-              {stats.map((stat) => (
-                <div key={stat.label}>
-                  <p className="text-4xl font-bold gradient-text">
-                    {stat.value}
-                  </p>
-                  <p className="mt-1 text-sm text-gray-500">{stat.label}</p>
-                </div>
-              ))}
-            </div>
           </div>
         </div>
       </div>
