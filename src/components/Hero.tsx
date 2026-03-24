@@ -1,36 +1,76 @@
+"use client";
+
+const carouselWords = [
+  "Experience",
+  "Design",
+  "Strategy",
+  "Innovation",
+  "Impact",
+  "Growth",
+];
+
 export default function Hero() {
   return (
-    <section className="relative flex min-h-screen items-center justify-center overflow-hidden px-6 pt-20">
-      {/* Gradient orbs */}
-      <div className="pointer-events-none absolute -top-40 left-1/2 h-[600px] w-[600px] -translate-x-1/2 rounded-full bg-accent/20 blur-[120px]" />
-      <div className="pointer-events-none absolute -bottom-40 right-0 h-[400px] w-[400px] rounded-full bg-accent-light/10 blur-[100px]" />
+    <section className="relative flex min-h-screen items-end overflow-hidden bg-gray-950 px-6 pb-24 lg:px-10">
+      {/* Animated gradient background */}
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute -top-1/3 left-1/4 h-[600px] w-[600px] rounded-full bg-accent-blue/15 blur-[120px]" />
+        <div className="absolute -bottom-1/4 right-1/4 h-[500px] w-[500px] rounded-full bg-accent-purple/15 blur-[120px]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(0,0,0,0.6)_100%)]" />
+      </div>
 
-      <div className="relative z-10 mx-auto max-w-4xl text-center">
-        <p className="mb-6 inline-block rounded-full border border-border px-4 py-1.5 text-sm text-muted">
-          User Experience Design Studio
+      {/* Grid overlay */}
+      <div
+        className="pointer-events-none absolute inset-0 opacity-[0.03]"
+        style={{
+          backgroundImage:
+            "linear-gradient(rgba(255,255,255,.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.5) 1px, transparent 1px)",
+          backgroundSize: "80px 80px",
+        }}
+      />
+
+      <div className="relative z-10 mx-auto w-full max-w-[1500px]">
+        {/* Desktop layout */}
+        <div className="hidden items-baseline gap-4 lg:flex">
+          <h1 className="text-8xl font-bold text-white">SPIN</h1>
+          <span className="text-5xl font-light text-gray-400">with</span>
+          <div className="h-[1.15em] overflow-hidden text-8xl font-bold">
+            <div className="word-carousel">
+              {carouselWords.map((word) => (
+                <span key={word} className="gradient-text block">
+                  {word}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile layout */}
+        <div className="lg:hidden">
+          <h1 className="text-5xl font-bold text-white sm:text-6xl">SPIN</h1>
+          <span className="mt-2 block text-2xl font-light text-gray-400">
+            with
+          </span>
+          <div className="mt-1 h-[1.15em] overflow-hidden text-5xl font-bold sm:text-6xl">
+            <div className="word-carousel">
+              {carouselWords.map((word) => (
+                <span key={word} className="gradient-text block">
+                  {word}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <p className="mt-8 max-w-xl text-lg leading-relaxed text-gray-400">
+          A UX design studio partnering with ambitious companies to create
+          intuitive, beautiful digital products that drive real results.
         </p>
-        <h1 className="mb-6 text-5xl font-bold leading-tight tracking-tight sm:text-6xl lg:text-7xl">
-          We design experiences
-          <br />
-          <span className="text-accent-light">people love.</span>
-        </h1>
-        <p className="mx-auto mb-10 max-w-2xl text-lg leading-relaxed text-muted sm:text-xl">
-          Spin UX partners with ambitious companies to craft intuitive,
-          beautiful digital products that drive engagement and growth.
-        </p>
-        <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-          <a
-            href="#contact"
-            className="rounded-lg bg-accent px-8 py-3.5 text-sm font-medium text-white transition-colors hover:bg-accent-light"
-          >
-            Start a Project
-          </a>
-          <a
-            href="#services"
-            className="rounded-lg border border-border px-8 py-3.5 text-sm font-medium text-muted transition-colors hover:border-muted hover:text-foreground"
-          >
-            Our Services
-          </a>
+
+        {/* Scroll prompt */}
+        <div className="mt-16 flex items-center gap-3 text-sm tracking-wider text-gray-500">
+          <div className="h-10 w-px bg-gray-700" />
+          Scroll to explore
         </div>
       </div>
     </section>

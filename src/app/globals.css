@@ -1,23 +1,29 @@
 @import "tailwindcss";
 
 :root {
-  --background: #09090b;
-  --foreground: #fafafa;
-  --muted: #a1a1aa;
-  --accent: #6366f1;
-  --accent-light: #818cf8;
-  --card: #18181b;
-  --border: #27272a;
+  --background: #ffffff;
+  --foreground: #09090b;
+  --muted: #6b7280;
+  --muted-light: #9ca3af;
+  --accent-blue: #60a5fa;
+  --accent-purple: #a78bfa;
+  --card-bg: #f9fafb;
+  --section-alt: #f3f4f6;
+  --border: #d1d5db;
+  --border-light: #e5e7eb;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-muted: var(--muted);
-  --color-accent: var(--accent);
-  --color-accent-light: var(--accent-light);
-  --color-card: var(--card);
+  --color-muted-light: var(--muted-light);
+  --color-accent-blue: var(--accent-blue);
+  --color-accent-purple: var(--accent-purple);
+  --color-card-bg: var(--card-bg);
+  --color-section-alt: var(--section-alt);
   --color-border: var(--border);
+  --color-border-light: var(--border-light);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
@@ -25,9 +31,32 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
 }
 
 html {
   scroll-behavior: smooth;
+}
+
+/* Gradient text utility */
+.gradient-text {
+  background: linear-gradient(to right, var(--accent-blue), var(--accent-purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Word carousel */
+@keyframes carousel {
+  0%, 12% { transform: translateY(0); }
+  16.66%, 28.66% { transform: translateY(-100%); }
+  33.32%, 45.32% { transform: translateY(-200%); }
+  49.98%, 61.98% { transform: translateY(-300%); }
+  66.64%, 78.64% { transform: translateY(-400%); }
+  83.3%, 95.3% { transform: translateY(-500%); }
+  100% { transform: translateY(0); }
+}
+
+.word-carousel {
+  animation: carousel 12s ease-in-out infinite;
 }
