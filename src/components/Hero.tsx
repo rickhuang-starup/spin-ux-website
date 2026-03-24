@@ -32,12 +32,12 @@ export default function Hero() {
       <div className="relative z-10 mx-auto w-full max-w-[1500px]">
         {/* Desktop layout */}
         <div className="hidden items-baseline gap-4 lg:flex">
-          <h1 className="text-8xl font-bold text-white">SPIN</h1>
-          <span className="text-5xl font-light text-gray-400">with</span>
-          <div className="h-[1.15em] overflow-hidden text-8xl font-bold">
+          <h1 className="text-8xl font-bold leading-none text-white">SPIN</h1>
+          <span className="text-5xl font-light leading-none text-gray-400">with</span>
+          <div className="h-[120px] overflow-hidden">
             <div className="word-carousel">
               {carouselWords.map((word) => (
-                <span key={word} className="gradient-text block">
+                <span key={word} className="gradient-text block text-8xl font-bold leading-[120px]">
                   {word}
                 </span>
               ))}
@@ -47,14 +47,14 @@ export default function Hero() {
 
         {/* Mobile layout */}
         <div className="lg:hidden">
-          <h1 className="text-5xl font-bold text-white sm:text-6xl">SPIN</h1>
+          <h1 className="text-5xl font-bold leading-none text-white sm:text-6xl">SPIN</h1>
           <span className="mt-2 block text-2xl font-light text-gray-400">
             with
           </span>
-          <div className="mt-1 h-[1.15em] overflow-hidden text-5xl font-bold sm:text-6xl">
+          <div className="mt-1 h-[60px] overflow-hidden sm:h-[72px]">
             <div className="word-carousel">
               {carouselWords.map((word) => (
-                <span key={word} className="gradient-text block">
+                <span key={word} className="gradient-text block text-5xl font-bold leading-[60px] sm:text-6xl sm:leading-[72px]">
                   {word}
                 </span>
               ))}

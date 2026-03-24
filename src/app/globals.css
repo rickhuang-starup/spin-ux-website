@@ -46,15 +46,15 @@ html {
   background-clip: text;
 }
 
-/* Word carousel */
+/* Word carousel — 6 words, each is 1/6 of container height */
 @keyframes carousel {
-  0%, 12% { transform: translateY(0); }
-  16.66%, 28.66% { transform: translateY(-100%); }
-  33.32%, 45.32% { transform: translateY(-200%); }
-  49.98%, 61.98% { transform: translateY(-300%); }
-  66.64%, 78.64% { transform: translateY(-400%); }
-  83.3%, 95.3% { transform: translateY(-500%); }
-  100% { transform: translateY(0); }
+  0%, 12%       { transform: translateY(0); }
+  16.66%, 28.66%  { transform: translateY(calc(-1 * 100% / 6)); }
+  33.32%, 45.32%  { transform: translateY(calc(-2 * 100% / 6)); }
+  49.98%, 61.98%  { transform: translateY(calc(-3 * 100% / 6)); }
+  66.64%, 78.64%  { transform: translateY(calc(-4 * 100% / 6)); }
+  83.3%, 95.3%    { transform: translateY(calc(-5 * 100% / 6)); }
+  100%            { transform: translateY(0); }
 }
 
 .word-carousel {
