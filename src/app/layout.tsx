@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     "Spin UX is a design studio specializing in user experience, interface design, and digital product strategy. We craft intuitive, beautiful digital experiences.",
   keywords: ["UX design", "UI design", "user experience", "digital product design", "design studio"],
   icons: {
-    icon: "/icon.svg",
+    icon: "/icon.png",
   },
   openGraph: {
     title: "Spin UX — User Experience Design Studio",
