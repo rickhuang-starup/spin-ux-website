@@ -3,7 +3,49 @@
 import { useState } from "react";
 
 export default function Contact() {
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [errorMsg, setErrorMsg] = useState("");
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setStatus("sending");
+    setErrorMsg("");
+
+    const form = e.currentTarget;
+    const data = {
+      name: (form.elements.namedItem("name") as HTMLInputElement).value,
+      email: (form.elements.namedItem("email") as HTMLInputElement).value,
+      company: (form.elements.namedItem("company") as HTMLInputElement).value,
+      message: (form.elements.namedItem("message") as HTMLTextAreaElement).value,
+      _honey: (form.elements.namedItem("_honey") as HTMLInputElement).value,
+    };
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      if (res.status === 429) {
+        setStatus("error");
+        setErrorMsg("Too many submissions. Please try again later.");
+        return;
+      }
+
+      if (!res.ok) {
+        const body = await res.json();
+        setStatus("error");
+        setErrorMsg(body.error || "Something went wrong. Please try again.");
+        return;
+      }
+
+      setStatus("sent");
+    } catch {
+      setStatus("error");
+      setErrorMsg("Failed to send. Please try again.");
+    }
+  }
 
   return (
     <section id="contact" className="bg-section-alt px-6 py-20 sm:py-28 lg:px-10">
@@ -37,7 +79,7 @@ export default function Contact() {
 
           {/* Right column — form */}
           <div className="lg:col-span-5">
-            {submitted ? (
+            {status === "sent" ? (
               <div className="flex h-full items-center">
                 <div>
                   <h3 className="mb-2 text-2xl font-bold text-gray-900">
@@ -50,19 +92,9 @@ export default function Contact() {
                 </div>
               </div>
             ) : (
-              <form
-                action="https://formsubmit.co/rick.huang@starup01.jp"
-                method="POST"
-                onSubmit={() => {
-                  setTimeout(() => setSubmitted(true), 100);
-                }}
-                className="space-y-8"
-              >
-                {/* FormSubmit config */}
-                <input type="hidden" name="_subject" value="New inquiry from Spin UX website" />
-                <input type="hidden" name="_captcha" value="false" />
-                <input type="hidden" name="_next" value="https://www.spin-ux.com/#contact" />
-                <input type="text" name="_honey" style={{ display: "none" }} />
+              <form onSubmit={handleSubmit} className="space-y-8">
+                {/* Honeypot */}
+                <input type="text" name="_honey" style={{ display: "none" }} tabIndex={-1} autoComplete="off" />
 
                 <div className="grid gap-8 sm:grid-cols-2">
                   <div>
@@ -129,11 +161,17 @@ export default function Contact() {
                     className="w-full resize-none border-0 border-b border-border bg-transparent py-3 text-gray-900 placeholder:text-gray-400 focus:border-gray-600 focus:outline-none"
                   />
                 </div>
+
+                {status === "error" && (
+                  <p className="text-sm text-red-600">{errorMsg}</p>
+                )}
+
                 <button
                   type="submit"
-                  className="group inline-flex items-center gap-2 text-gray-900 underline underline-offset-4 transition-colors hover:text-gray-600"
+                  disabled={status === "sending"}
+                  className="group inline-flex items-center gap-2 text-gray-900 underline underline-offset-4 transition-colors hover:text-gray-600 disabled:opacity-50"
                 >
-                  Send message
+                  {status === "sending" ? "Sending..." : "Send message"}
                   <svg
                     className="h-4 w-4 transition-transform group-hover:translate-x-1"
                     fill="none"
