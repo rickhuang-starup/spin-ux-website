@@ -1,10 +1,10 @@
 const footerLinks = {
   services: [
-    { label: "UX Research", href: "#services" },
-    { label: "UI Design", href: "#services" },
-    { label: "Interaction Design", href: "#services" },
-    { label: "Product Strategy", href: "#services" },
-    { label: "Design Systems", href: "#services" },
+    { label: "Customized AI Systems", href: "#services" },
+    { label: "Archaive", href: "#services" },
+    { label: "SENDAI", href: "#services" },
+    { label: "FLOWeRIUM", href: "#services" },
+    { label: "R&D", href: "#services" },
   ],
   company: [
     { label: "About", href: "#about" },

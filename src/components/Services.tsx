@@ -1,39 +1,37 @@
 const services = [
   {
     number: "[0.1]",
-    title: "UX Research",
+    title: "Customized AI Systems",
     description:
-      "Deep user research, usability testing, and data-driven analysis to uncover the insights that shape smarter product decisions.",
+      "Bespoke artificial intelligence solutions designed and built around your unique business challenges — from computer vision to natural language processing and beyond.",
   },
   {
     number: "[0.2]",
-    title: "UI Design",
+    title: "Archaive",
+    tag: "Manufacturing Platform",
     description:
-      "Pixel-perfect interface design that balances aesthetics with functionality — creating visual systems that scale with your product.",
+      "An intelligent platform purpose-built for manufacturing — streamlining production workflows, quality control, and operational efficiency with AI-driven insights.",
   },
   {
     number: "[0.3]",
-    title: "Interaction Design",
+    title: "SENDAI",
+    tag: "Retail & Stock Management",
     description:
-      "Thoughtful micro-interactions, animations, and flows that make products feel alive and effortless to use.",
+      "A smart retail platform that optimizes inventory management, demand forecasting, and stock operations — helping retailers reduce waste and maximize availability.",
   },
   {
     number: "[0.4]",
-    title: "Product Strategy",
+    title: "FLOWeRIUM",
+    tag: "All-in-One AI Platform",
     description:
-      "Strategic guidance from concept to launch — aligning user needs with business goals to build products that matter.",
+      "A comprehensive platform combining AI agent deployment and ontology management — giving organizations a unified environment to build, manage, and scale intelligent systems.",
   },
   {
     number: "[0.5]",
-    title: "Design Systems",
+    title: "R&D",
+    tag: "Advanced AI Research",
     description:
-      "Scalable component libraries and design tokens that keep your product consistent as your team and codebase grow.",
-  },
-  {
-    number: "[0.6]",
-    title: "Prototyping",
-    description:
-      "High-fidelity interactive prototypes that bring ideas to life — enabling fast validation and confident stakeholder alignment.",
+      "Tailored research and development on advanced AI systems — exploring cutting-edge techniques and architectures to solve your most complex technical challenges.",
   },
 ];
 
@@ -55,8 +53,8 @@ export default function Services() {
           </div>
           <div className="flex items-end lg:col-span-5">
             <p className="max-w-xl text-lg leading-relaxed text-gray-600">
-              From research to launch, we provide end-to-end UX and design
-              services tailored to your product and your users.
+              From custom AI systems to full-scale platforms, we build
+              intelligent solutions that transform how businesses operate.
             </p>
           </div>
         </div>
@@ -71,9 +69,14 @@ export default function Services() {
               <span className="mb-4 block font-mono text-sm text-muted-light">
                 {service.number}
               </span>
-              <h3 className="mb-3 text-xl font-semibold text-gray-900">
+              <h3 className="mb-1 text-xl font-semibold text-gray-900">
                 {service.title}
               </h3>
+              {"tag" in service && service.tag && (
+                <p className="mb-3 text-xs font-medium uppercase tracking-wider text-accent-blue">
+                  {service.tag}
+                </p>
+              )}
               <div className="mb-4 h-px w-12 bg-border transition-all group-hover:w-20 group-hover:bg-accent-blue" />
               <p className="text-sm leading-relaxed text-gray-600">
                 {service.description}
